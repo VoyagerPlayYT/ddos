@@ -1,21 +1,18 @@
-FROM node:18-slim  
+FROM node:18-alpine  
+WORKDIR /usr/src/nuke  
 
-RUN apt-get update && \  
-    apt-get install -y \  
+RUN apk update && \  
+    apk add --no-cache \  
     python3 \  
     make \  
     g++ \  
-    git \  
-    ca-certificates \  
-    && rm -rf /var/lib/apt/lists/*  
+    git  
 
-WORKDIR /app  
 COPY package*.json ./  
 
-RUN npm cache clean --force && \  
-    npm install -g npm@10.2.5 --unsafe-perm && \  
-    npm install --production --legacy-peer-deps  
+RUN npm install -g npm@10.2.5 && \  
+    npm install --production  
 
 COPY . .  
 
-CMD ["npm", "start"]  
+CMD ["npm", "run", "ultra"]  
