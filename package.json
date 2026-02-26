@@ -1,20 +1,13 @@
-FROM node:18-alpine
-WORKDIR /usr/src/armageddon
-
-RUN apk update && \
-    apk add --no-cache \
-    python3 \
-    make \
-    g++ \
-    git \
-    openssl \
-    ca-certificates
-
-COPY package*.json ./
-
-RUN npm install -g npm@10.2.5 --unsafe-perm && \
-    npm install --production --unsafe-perm
-
-COPY . .
-
-CMD ["npm", "run", "stress"]
+{
+  "name": "ddos-attack",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "socks-proxy-agent": "^8.0.2",
+    "random-useragent": "^0.5.0"
+  }
+}
