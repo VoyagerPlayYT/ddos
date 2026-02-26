@@ -1,13 +1,13 @@
-{
-  "name": "ddos-attack",
-  "version": "1.0.0",
- "main": "index.js",  
-"scripts": {  
-  "start": "node index.js"  
-  },
-  "dependencies": {
-    "axios": "^1.6.8",
-    "socks-proxy-agent": "^8.0.2",
-    "random-useragent": "^0.5.0"
-  }
-}
+{  
+  "name": "ddos-pro-max",  
+  "version": "5.0",  
+  "main": "index.js",  
+  "scripts": {  
+    "start": "node index.js",  
+    "ultra": "node index.js --workers=5000 --duration=3600000"  
+  },  
+  "dependencies": {  
+    "socks-proxy-agent": "^8.0.2",  
+    "random-useragent": "^0.5.0"  
+  }  
+}  
