@@ -1,19 +1,21 @@
-FROM node:18-bullseye
+FROM node:18-slim  
 
-RUN apt-get update && \
-    apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    git \
-    ca-certificates
+RUN apt-get update && \  
+    apt-get install -y \  
+    python3 \  
+    make \  
+    g++ \  
+    git \  
+    ca-certificates \  
+    && rm -rf /var/lib/apt/lists/*  
 
-WORKDIR /app
-COPY package*.json ./
+WORKDIR /app  
+COPY package*.json ./  
 
-RUN npm install -g npm@10.2.5 && \
-    npm install --production
+RUN npm cache clean --force && \  
+    npm install -g npm@10.2.5 --unsafe-perm && \  
+    npm install --production --legacy-peer-deps  
 
-COPY . .
+COPY . .  
 
-CMD ["npm", "start"]
+CMD ["npm", "start"]  
